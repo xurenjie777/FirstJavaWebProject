@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StaffMapper">
+    <insert id="add" parameterType="Staff" >
+        insert into Staff ( name,sex ) values (#{name},#{sex})
+    </insert>
+
+    <delete id="delete" parameterType="Staff" >
+        delete from Staff where id= #{id}
+    </delete>
+
+    <select id="get" parameterType="int" resultType="Staff">
+        select * from   Staff  where id= #{id}
+    </select>
+
+    <update id="update" parameterType="Staff" >
+        update Staff set name=#{name}, sex = #{sex} where id=#{id}
+    </update>
+    <select id="list" resultType="Staff">
+        select * from   Staff
+    </select>
+</mapper>
