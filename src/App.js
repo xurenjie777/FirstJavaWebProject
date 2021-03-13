@@ -1,4 +1,4 @@
-import './App.css';
+import './login.css';
 import React, { Component } from 'react';
 import axios from 'axios';
 import {message} from 'antd';
@@ -20,7 +20,6 @@ export default class App extends Component{
 
         <div id="login-box">
           <h1>Login</h1>
-          <span children={this.state.staffs[1]}/>
           <div className="form">
             <div className="item">
               <i className="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -41,7 +40,7 @@ export default class App extends Component{
               <button>Login</button>
             </div>
             <div>
-              <a href="#/register"><font color="#81779999">Create new account</font></a>
+              <a href="#/register"><font color="#000000">Create new account</font></a>
             </div>
           </div>
         </div>
