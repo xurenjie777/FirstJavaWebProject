@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { message,Layout,Breadcrumb,Input,Avatar,Button,Radio } from 'antd';
-import './register.css';
+import './antd.css';
 import axios from "axios";
 
 
@@ -16,6 +16,7 @@ export default class Register extends Component{
             department:''
         }
     }
+
 
     render() {
         return (
@@ -73,13 +74,16 @@ export default class Register extends Component{
             data.append('password',this.state.password);
             data.append('sex',this.state.sex);
             data.append('department',this.state.department);
-            axios.post('http://localhost:8080/user/signup',data).then(res=>{
-                if(res.data.code == 100){
-                    message.info('注册成功');
-                    this.props.history.push({ pathname: '/'});
+            data.append('level',this.state.level);
+            axios.post('http://localhost:8080/register',data).then(res=>{
+                if (res.data == 0){
+                    message.destroy();
+                    message.info('用户名已存在');
                 }
-                else {
-                    message.info(res.data.msg);
+                else if(res.data == 1){
+                    message.destroy();
+                    message.info('注册成功');
+                    this.props.history.push({pathname:'/'});
                 }
             })
         }

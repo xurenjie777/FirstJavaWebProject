@@ -1,3 +1,4 @@
+import './antd.css';
 import './login.css';
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -8,7 +9,7 @@ export default class Login extends Component{
     super(props);
     this.state = {
       name:'',
-      password:'',
+      password:''
     }
   }
 
@@ -54,16 +55,21 @@ export default class Login extends Component{
       let data = new FormData();
       data.append('username',this.state.name);
       data.append('password',this.state.password);
-      axios.post('http://localhost:8080/user/signin',data).then(res=>{
-        this.setState({
-          name:'',
-          password:''
-        });
-        if(res.data.code == 100){
-          this.props.history.push({pathname:'/homepage',state:{id:res.data.data.id}});
+      message.destroy();
+      axios.post('http://localhost:8080/signin',data).then(res=>{
+        if(res.data.code == 400){
+          message.info('用户不存在或密码错误',1.5);
         }
-        else if(res.data.code == 400){
-          message.info(res.data.msg);
+        else{
+          if(res.data.level == 1){
+
+          }
+          else if(res.data.level == 2){
+
+          }
+          else if(res.data.level == 3){
+
+          }
         }
       })
     }
