@@ -1,31 +1,25 @@
 package com.example.demo.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Staff {
     private int id;
     private String name;
     private String sex;
+    private String password;
+    private int level;
+    private String department;
+    private int code;
+    public Staff(int code){
+        this.code = code;
+    }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getSex() {
-        return sex;
-    }
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
     @Override
     public String toString() {
-        return "Staff [id=" + id + ", name=" + name  + ", sex=" + sex + "]";
+        return "Staff [id=" + id + ", name=" + name  + ", sex=" + sex + ", password=" + password + ", level=" + level + ", department=" + department + "]";
     }
 }
 

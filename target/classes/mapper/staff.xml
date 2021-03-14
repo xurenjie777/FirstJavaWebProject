@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.StaffMapper">
     <insert id="add" parameterType="Staff" >
-        insert into staff ( name,sex ) values (#{name},#{sex})
+        insert into staff ( sex, name, password, department, level) values (#{sex},#{name},#{password},#{department},#{level})
     </insert>
 
     <delete id="delete" parameterType="Staff" >
@@ -17,7 +17,17 @@
     <update id="update" parameterType="Staff" >
         update staff set name=#{name}, sex = #{sex} where id=#{id}
     </update>
+
     <select id="list" resultType="Staff">
         select * from   staff
     </select>
+
+    <select id="findByStaffName" resultType="Staff">
+        select * from staff where name=#{name}
+    </select>
+
+    <select id="findByStaffDepartment" resultType="Staff">
+        select * from staff where department=#{department}
+    </select>
+
 </mapper>

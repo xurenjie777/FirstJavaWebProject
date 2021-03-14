@@ -10,5 +10,6 @@ public interface StaffMapper {
     public Staff get(int id);
     public int update(Staff staff);
     public List<Staff> list();
-
+    public Staff findByStaffName(String name);
+    public List<Staff> findByStaffDepartment(String department);
 }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 
 
 /*
@@ -34,6 +35,22 @@ public class RedisTools {
         }
         return  result;
     }
+
+    /*
+    数据插入
+     */
+    public boolean setList(String key, List<Staff> staffs){
+        boolean result = false;
+        try{
+            redisTemplate.opsForValue().set(key,staffs);
+            result=true;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return  result;
+    }
+
     /*
      * 判断缓存中是否有对应的value
      */
@@ -53,6 +70,21 @@ public class RedisTools {
         }
         return result;
     }
+
+    /*
+   获取数据
+    */
+    public List<Staff> getList(String key){
+        List<Staff> result;
+        try{
+            result= (List<Staff>) redisTemplate.opsForValue().get(key);
+        }catch (Exception e){
+            result= null;
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /*
      删除数据
      */
